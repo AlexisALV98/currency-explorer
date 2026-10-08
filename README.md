@@ -1,13 +1,13 @@
 # Currency Explorer · Starter Project
 
 ## Integrantes
-- Estudiante A:
-- Estudiante B:
+- Estudiante A: Javier Zarza Rojas
+- Estudiante B: Alexis Acosta Alvarez
 
 ## Pair Programming
 | Misión | Driver | Navigator | Commit / evidencia |
 |---|---|---|---|
-| 04 | | | |
+| 04 | Javier Zarza Rojas | Alexis Acosta Alvarez | |
 | 05 | | | |
 | 06 | | | |
 | 07 | | | |
