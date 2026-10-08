@@ -22,17 +22,25 @@ async function convertirMoneda() {
   // Misiones guiadas 1-3: ya existe un flujo mínimo funcional EUR -> USD.
   // A partir de la Misión 4 debes convertirlo en una solución dinámica.
 
-  const valor = Number(cantidad.value);
-
-  // TODO · MISIÓN 07: sustituir esta validación mínima por una validación completa.
-  if (!Number.isFinite(valor) || valor <= 0) {
-    mostrarError("Escribe una cantidad mayor que cero.");
+  
+  // MISIÓN 07: validar antes de convertir el texto a número.
+  const errorCantidad = validarCantidad(cantidad.value);
+  if (errorCantidad) {
+    mostrarError(errorCantidad);
     return;
   }
+
+  const valor = Number(cantidad.value);
 
   // TODO · MISIÓN 04: LAS MONEDAS SE LEEN DE LOS SELECT ELEGIDOS POR EL USUARIO.
   const monedaOrigen = origen.value;
   const monedaDestino = destino.value;
+
+    // MISIÓN 07: no tiene sentido consultar la API si ambas monedas son iguales.
+  if (monedaOrigen === monedaDestino) {
+    mostrarError("Elige dos monedas diferentes para convertir.");
+    return;
+  }
 
   const url = `https://api.frankfurter.dev/v2/rate/${monedaOrigen}/${monedaDestino}`;
 
@@ -62,7 +70,26 @@ function intercambiarMonedas() {
   convertirMoneda();                 // 3) volver a calcular
 }
 
+// MISIÓN 07: devuelve un mensaje de error, o null si la cantidad es válida.
+function validarCantidad(texto) {
+  if (texto.trim() === "") {
+    return "Escribe una cantidad para convertir.";
+  }
 
+  const numero = Number(texto);
+
+  if (!Number.isFinite(numero)) {
+    return "La cantidad no es un número válido.";
+  }
+  if (numero <= 0) {
+    return "La cantidad debe ser mayor que cero.";
+  }
+  if (numero > 1e12) {
+    return "La cantidad es demasiado grande (máximo 1,000,000,000,000).";
+  }
+
+  return null;
+}
 // MISIÓN 05: formatea un número con separador de miles y 2 decimales.
 function formatearNumero(numero) {
   return numero.toLocaleString("es-MX", {
