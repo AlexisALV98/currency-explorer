@@ -8,9 +8,9 @@
 | Misión | Driver | Navigator | Commit / evidencia |
 |---|---|---|---|
 | 04 | Javier Zarza Rojas | Alexis Acosta Alvarez | LAS MONEDAS SE LEEN DE LOS SELECT ELEGIDOS POR EL USUARIO. |
-| 05 | |Alexis Acosta Alvarez | Javier Zarza Rojas | calcular y delegar la presentacion a otra funcion.|
+| 05 |Alexis Acosta Alvarez | Javier Zarza Rojas | calcular y delegar la presentacion a otra funcion.|
 | 06 | Javier Zarza Rojas| Alexis Acosta Alvarez| Intercambia las monedas seleccionadas y recalcula.|
-| 07 | | | |
+| 07 |Alexis Acosta Alvarez | Javier Zarza Rojas |validación completa de cantidad y monedas iguales |
 | 08 | | | |
 | 09 | | | |
 | 10 | | | |
