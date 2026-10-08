@@ -54,6 +54,20 @@
           <strong id="resultadoTexto">Esperando consulta...</strong>
           <small id="detalleTasa">La tasa se obtendrá al presionar Convertir.</small>
         </section>
+
+        <!-- MISIÓN 11: histórico del par de monedas -->
+        <section class="historico">
+          <div class="historico-header">
+            <span class="result-label">HISTÓRICO</span>
+            <select id="periodo" aria-label="Periodo del histórico">
+              <option value="6">Últimos 6 meses</option>
+              <option value="12" selected>Últimos 12 meses</option>
+            </select>
+            <button id="verHistorico" class="secondary" type="button">Ver histórico</button>
+          </div>
+          <p id="historicoEstado" class="historico-estado" aria-live="polite">Elige un par de monedas y presiona "Ver histórico".</p>
+          <div id="grafica" class="grafica" aria-label="Gráfica del tipo de cambio"></div>
+        </section>
       </section>
 
       <footer class="footer-note">HTML + CSS + JavaScript · Pair Programming</footer>
