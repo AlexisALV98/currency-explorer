@@ -14,6 +14,7 @@
 | 08 |Javier Zarza Rojas | Alexis Acosta Alvarez |activa o desactiva el estado visual de carga. |
 | 09 |Alexis Acosta Alvarez | Javier Zarza Rojas | response.ok y mensajes de error por tipo |
 | 10 |Javier Zarza Rojas |Alexis Acosta Alvarez | diseño responsive y foco visible |
+| 11 |Alexis Acosta Alvarez | Javier Zarza Rojas | historico mensual con map() y grafica de barras |
 
 ## Objetivo
 Completar una aplicación frontend que consuma Frankfurter API para convertir divisas y demostrar comprensión de eventos, DOM, `fetch()`, JSON, asincronía, validación y manejo de errores.
