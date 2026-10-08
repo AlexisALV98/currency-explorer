@@ -18,3 +18,13 @@ input:focus,select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(22,1
 .result.error{background:var(--warn);border-left-color:#b56b13}.footer-note{text-align:center;padding:0 20px 22px;color:var(--muted);font-size:.78rem}
 @media(max-width:600px){.hero,.panel{padding-left:22px;padding-right:22px}.currency-grid{grid-template-columns:1fr 46px 1fr;gap:8px}.swap{height:44px}.field label{font-size:.72rem}}
 .swap:disabled{opacity:.55;cursor:wait;transform:none}
+.result strong{overflow-wrap:anywhere}
+.primary:focus-visible,.swap:focus-visible{outline:3px solid rgba(22,117,139,.35);outline-offset:2px}
+@media(max-width:420px){
+  .app-shell{padding:16px 12px}
+  h1{font-size:1.8rem}
+  .currency-grid{grid-template-columns:1fr;gap:10px}
+  .swap{justify-self:center;width:48px;transform:rotate(90deg)}
+  .swap:hover{transform:rotate(90deg) translateY(-1px)}
+  .swap:disabled{transform:rotate(90deg)}
+}
