@@ -54,13 +54,14 @@ async function convertirMoneda() {
   }
 }
 
+// MISIÓN 06: intercambia las monedas seleccionadas y recalcula.
 function intercambiarMonedas() {
-  // TODO · MISIÓN 06:
-  // 1) guardar temporalmente el valor de origen
-  // 2) intercambiar origen.value y destino.value
-  // 3) volver a calcular
-  mostrarError("Misión 06 pendiente: implementa el intercambio de monedas.");
+  const temporal = origen.value;     // 1) guardar el origen
+  origen.value = destino.value;      // 2) origen toma el valor de destino
+  destino.value = temporal;          //    destino toma el origen guardado
+  convertirMoneda();                 // 3) volver a calcular
 }
+
 
 // MISIÓN 05: formatea un número con separador de miles y 2 decimales.
 function formatearNumero(numero) {
