@@ -7,8 +7,8 @@
 ## Pair Programming
 | Misión | Driver | Navigator | Commit / evidencia |
 |---|---|---|---|
-| 04 | Javier Zarza Rojas | Alexis Acosta Alvarez | |
-| 05 | | | |
+| 04 | Javier Zarza Rojas | Alexis Acosta Alvarez | LAS MONEDAS SE LEEN DE LOS SELECT ELEGIDOS POR EL USUARIO. |
+| 05 | |Alexis Acosta Alvarez | Javier Zarza Rojas | calcular y delegar la presentacion a otra funcion.|
 | 06 | | | |
 | 07 | | | |
 | 08 | | | |

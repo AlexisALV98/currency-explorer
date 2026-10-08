@@ -43,11 +43,9 @@ async function convertirMoneda() {
     // TODO · MISIÓN 09: comprobar response.ok y lanzar un error si corresponde.
     const datos = await respuesta.json();
 
+        // MISIÓN 05: calcular y delegar la presentación a otra función.
     const conversion = valor * datos.rate;
-
-    resultado.classList.remove("error");
-    resultadoTexto.textContent = `${valor.toFixed(2)} ${monedaOrigen} = ${conversion.toFixed(2)} ${monedaDestino}`;
-    detalleTasa.textContent = `1 ${monedaOrigen} = ${datos.rate} ${monedaDestino} · ${datos.date}`;
+    mostrarResultado(valor, conversion, monedaOrigen, monedaDestino, datos);
 
   } catch (error) {
     // TODO · MISIÓN 09: mejora el mensaje y analiza qué errores pueden llegar aquí.
@@ -62,6 +60,23 @@ function intercambiarMonedas() {
   // 2) intercambiar origen.value y destino.value
   // 3) volver a calcular
   mostrarError("Misión 06 pendiente: implementa el intercambio de monedas.");
+}
+
+// MISIÓN 05: formatea un número con separador de miles y 2 decimales.
+function formatearNumero(numero) {
+  return numero.toLocaleString("es-MX", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+}
+
+// MISIÓN 05: muestra la conversión en el DOM.
+function mostrarResultado(valor, conversion, monedaOrigen, monedaDestino, datos) {
+  resultado.classList.remove("error");
+  resultadoTexto.textContent =
+    `${formatearNumero(valor)} ${monedaOrigen} = ${formatearNumero(conversion)} ${monedaDestino}`;
+  detalleTasa.textContent =
+    `1 ${monedaOrigen} = ${datos.rate} ${monedaDestino} · Fecha: ${datos.date}`;
 }
 
 // 4. UTILIDADES DE INTERFAZ
