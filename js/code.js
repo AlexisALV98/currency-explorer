@@ -17,6 +17,8 @@ const detalleTasa = document.querySelector("#detalleTasa");
 btnConvertir.addEventListener("click", convertirMoneda);
 btnIntercambiar.addEventListener("click", intercambiarMonedas);
 
+// 3. FUNCIONES DE LA APLICACIÓN
+
 async function convertirMoneda() {
   // MISIÓN 07: validar antes de convertir el texto a número.
   const errorCantidad = validarCantidad(cantidad.value);
@@ -45,16 +47,25 @@ async function convertirMoneda() {
 
     const respuesta = await fetch(url);
 
-    // TODO · MISIÓN 09: comprobar response.ok y lanzar un error si corresponde.
+    // MISIÓN 09: fetch no falla con 404/500, hay que revisarlo nosotros.
+    if (!respuesta.ok) {
+      throw new Error(`HTTP ${respuesta.status}`);
+    }
+
     const datos = await respuesta.json();
+
+    // MISIÓN 09: asegurarnos de que el JSON trae una tasa numérica.
+    if (!Number.isFinite(datos.rate)) {
+      throw new Error("Respuesta sin tasa válida");
+    }
 
     // MISIÓN 05: calcular y delegar la presentación a otra función.
     const conversion = valor * datos.rate;
     mostrarResultado(valor, conversion, monedaOrigen, monedaDestino, datos);
 
   } catch (error) {
-    // TODO · MISIÓN 09: mejora el mensaje y analiza qué errores pueden llegar aquí.
-    mostrarError("No fue posible completar la consulta.");
+    // MISIÓN 09: mostrar un mensaje según el tipo de error.
+    mostrarError(obtenerMensajeError(error));
     console.error(error);
 
   } finally {
@@ -62,7 +73,6 @@ async function convertirMoneda() {
     mostrarCargando(false);
   }
 }
-
 
 // MISIÓN 06: intercambia las monedas seleccionadas y recalcula.
 function intercambiarMonedas() {
@@ -92,6 +102,9 @@ function validarCantidad(texto) {
 
   return null;
 }
+
+// 4. UTILIDADES DE INTERFAZ
+
 // MISIÓN 05: formatea un número con separador de miles y 2 decimales.
 function formatearNumero(numero) {
   return numero.toLocaleString("es-MX", {
@@ -122,7 +135,26 @@ function mostrarCargando(activo) {
   }
 }
 
-// 4. UTILIDADES DE INTERFAZ
+// MISIÓN 09: traduce el error técnico a un mensaje claro para el usuario.
+function obtenerMensajeError(error) {
+  if (!navigator.onLine) {
+    return "Sin conexión a internet. Revisa tu red e inténtalo de nuevo.";
+  }
+  if (error instanceof TypeError) {
+    return "No se pudo conectar con el servidor de tipos de cambio.";
+  }
+  if (error.message === "HTTP 404") {
+    return "La API no encontró ese par de monedas.";
+  }
+  if (error.message.startsWith("HTTP 5")) {
+    return "El servicio de tipos de cambio no está disponible. Intenta más tarde.";
+  }
+  if (error.message.startsWith("HTTP")) {
+    return `La API respondió con un error (${error.message}).`;
+  }
+  return "La respuesta de la API no tiene el formato esperado.";
+}
+
 function mostrarError(mensaje) {
   resultado.classList.add("error");
   resultadoTexto.textContent = mensaje;

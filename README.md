@@ -12,7 +12,7 @@
 | 06 | Javier Zarza Rojas| Alexis Acosta Alvarez| Intercambia las monedas seleccionadas y recalcula.|
 | 07 |Alexis Acosta Alvarez | Javier Zarza Rojas |validación completa de cantidad y monedas iguales |
 | 08 |Javier Zarza Rojas | Alexis Acosta Alvarez |activa o desactiva el estado visual de carga. |
-| 09 | | | |
+| 09 |Alexis Acosta Alvarez | Javier Zarza Rojas | response.ok y mensajes de error por tipo |
 | 10 | | | |
 
 ## Objetivo
